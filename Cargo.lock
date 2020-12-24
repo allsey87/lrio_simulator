@@ -508,18 +508,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "bevy_rapier3d"
-version = "0.7.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "c11b4b13050eb907f824c92b598e418e75f710c50a3c35a2cd3f97f6f5afc0e1"
-dependencies = [
- "bevy",
- "concurrent-queue",
- "nalgebra",
- "rapier3d",
-]
-
-[[package]]
 name = "bevy_reflect"
 version = "0.4.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -2272,7 +2260,7 @@ name = "lrio_simulator"
 version = "0.1.0"
 dependencies = [
  "bevy",
- "bevy_rapier3d",
+ "rapier3d",
 ]
 
 [[package]]
