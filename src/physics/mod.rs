@@ -59,9 +59,27 @@ impl Engine {
     }
 }
 
-fn tick(mut engine: ResMut<Engine>) {
+// write back to the transform component added from the PbrBundle
+fn tick(mut engine: ResMut<Engine>, mut query: Query<(&Model, &mut Transform)>) {
     engine.tick();
+    for (model, mut transform) in query.iter_mut() {
+        let body_handle = model.body_handle;
+        if let Some(body) = engine.body_set.get(body_handle) {
+            // copy body to transform
+
+            let updated_translation = &body.position().translation.vector;
+
+            transform.translation.x = updated_translation.x;
+            transform.translation.y = updated_translation.y;
+            transform.translation.z = updated_translation.z;
+
+        }
+    }   
 }
+
+// fn tick(mut engine: ResMut<Engine>) {
+//     engine.tick();
+// }
 
 pub struct Plugin;
 
